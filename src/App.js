@@ -6,10 +6,6 @@ function App() {
   // render() {
   return (
     <>
-      {/* <Form onSubmit={addContactHandler} />
-      <Filter onChange={changeFilter} value={filter} />
-      <ContactList contacts={visibleContacts} onDeleteContact={deleteContact} /> */}
-
       <Form />
       <Filter />
       <ContactList />

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import s from './Form.module.css';
-import { addContact } from '../../redux/contacts/contacts-actions';
+import { addContact } from '../../redux/contacts/contacts-operations';
 // import { connect } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from '../../redux/contacts/contacts-selectors';
 
 const Form = () => {
   // state = {
@@ -13,6 +14,7 @@ const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
@@ -28,33 +30,24 @@ const Form = () => {
     }
   };
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.currentTarget;
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // };
-
   const handleSubmit = event => {
     event.preventDefault();
+
+    const duplicateContact = contacts.find(contact => contact.name === name);
+    if (duplicateContact) {
+      alert(`${name} is already in contacts`);
+      resetForm();
+      return;
+    }
+
     dispatch(addContact(name, number));
-    setNumber('');
-    setName('');
+    resetForm();
   };
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   addContact(name, number);
-  //   resetForm();
-  // };
-
-  // const resetForm = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
-
-  // render() {
-  //   const { name, number } = this.state;
+  const resetForm = () => {
+    setName('');
+    setNumber('');
+  };
 
   return (
     <>

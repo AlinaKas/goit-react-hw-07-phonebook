@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 // import { connect } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/contacts-actions';
+import { deleteContact } from '../../redux/contacts/contacts-operations';
 import {
   getContacts,
   getFilter,
@@ -28,9 +28,9 @@ const ContactList = () => {
     <>
       <h2 className={s.title}>Contacts</h2>
       <ul className={s.list}>
-        {visibleContacts.map(({ name, number, id }) => (
+        {visibleContacts.map(({ name, phone, id }) => (
           <li key={id} className={s.item}>
-            {`${name}: ${number}`}
+            {`${name}: ${phone}`}
             <button
               className={s.btn}
               type="button"
