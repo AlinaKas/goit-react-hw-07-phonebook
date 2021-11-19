@@ -7,13 +7,13 @@ import { useEffect } from 'react';
 import {
   deleteContact,
   fetchContacts,
-} from '../../redux/contacts/contacts-operations';
+} from 'redux/contacts/contacts-operations';
 import {
   // getContacts,
   // getFilter,
   getVisibleContacts,
   getLoader,
-} from '../../redux/contacts/contacts-selectors';
+} from 'redux/contacts/contacts-selectors';
 
 const ContactList = () => {
   // const contacts = useSelector(getContacts);

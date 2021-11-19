@@ -20,6 +20,7 @@ export const deleteContactSuccess = createAction(
   'contacts/deleteContactSuccess',
 );
 export const deleteContactError = createAction('contacts/deleteContactError');
+export const filterContact = createAction('contacts/filter');
 
 // export const addContact = createAction('contacts/add', (name, number) => ({
 //   payload: {
@@ -29,4 +30,3 @@ export const deleteContactError = createAction('contacts/deleteContactError');
 //   },
 // }));
 // export const deleteContact = createAction('contacts/delete');
-export const filterContact = createAction('contacts/filter');
