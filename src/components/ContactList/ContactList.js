@@ -12,12 +12,14 @@ import {
   // getContacts,
   // getFilter,
   getVisibleContacts,
+  getLoader,
 } from '../../redux/contacts/contacts-selectors';
 
 const ContactList = () => {
   // const contacts = useSelector(getContacts);
   // const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+  const loading = useSelector(getLoader);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -42,6 +44,7 @@ const ContactList = () => {
           </li>
         ))}
       </ul>
+      {loading && <h1 className={s.title}>Loading...</h1>}
     </>
   );
 };
