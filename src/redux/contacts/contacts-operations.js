@@ -4,6 +4,14 @@ import * as actions from './contacts-actions';
 axios.defaults.baseURL =
   'https://61965d6eaf46280017e7dff4.mockapi.io/api/phonebook';
 
+export const fetchContacts = () => dispatch => {
+  dispatch(actions.fetchContactsRequest());
+  axios
+    .get('/contacts')
+    .then(({ data }) => dispatch(actions.fetchContactsSuccess(data)))
+    .catch(error => dispatch(actions.fetchContactsError(error)));
+};
+
 export const addContact = (name, phone) => dispatch => {
   const contact = {
     name,

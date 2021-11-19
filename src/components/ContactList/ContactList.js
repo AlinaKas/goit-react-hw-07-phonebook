@@ -3,38 +3,38 @@ import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 // import { connect } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/contacts-operations';
+import { useEffect } from 'react';
 import {
-  getContacts,
-  getFilter,
+  deleteContact,
+  fetchContacts,
+} from '../../redux/contacts/contacts-operations';
+import {
+  // getContacts,
+  // getFilter,
+  getVisibleContacts,
 } from '../../redux/contacts/contacts-selectors';
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  // const contacts = useSelector(getContacts);
+  // const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  function getVisibleContacts() {
-    const normalizedFilter = filter.toLowerCase();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter),
-    );
-  }
-
-  const visibleContacts = getVisibleContacts();
+  const contacts = useSelector(getVisibleContacts);
 
   return (
     <>
       <h2 className={s.title}>Contacts</h2>
       <ul className={s.list}>
-        {visibleContacts.map(({ name, phone, id }) => (
+        {contacts.map(({ name, phone, id }) => (
           <li key={id} className={s.item}>
             {`${name}: ${phone}`}
             <button
               className={s.btn}
               type="button"
-              // onClick={()=>{onDelete(id)}}
               onClick={() => dispatch(deleteContact(id))}
             >
               Delete

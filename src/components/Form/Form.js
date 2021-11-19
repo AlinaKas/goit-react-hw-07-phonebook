@@ -6,11 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../redux/contacts/contacts-selectors';
 
 const Form = () => {
-  // state = {
-  //   name: '',
-  //   number: '',
-  // };
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
