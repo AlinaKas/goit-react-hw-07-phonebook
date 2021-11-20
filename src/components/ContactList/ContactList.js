@@ -19,13 +19,12 @@ const ContactList = () => {
   // const contacts = useSelector(getContacts);
   // const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+  const contacts = useSelector(getVisibleContacts);
   const loading = useSelector(getLoader);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  const contacts = useSelector(getVisibleContacts);
 
   return (
     <>

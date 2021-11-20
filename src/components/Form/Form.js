@@ -7,7 +7,7 @@ import { getContacts } from 'redux/contacts/contacts-selectors';
 
 const Form = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
@@ -18,7 +18,7 @@ const Form = () => {
         setName(value);
         break;
       case 'number':
-        setNumber(value);
+        setPhone(value);
         break;
       default:
         return;
@@ -35,13 +35,13 @@ const Form = () => {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, phone }));
     resetForm();
   };
 
   const resetForm = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -72,7 +72,7 @@ const Form = () => {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
-            value={number}
+            value={phone}
             onChange={handleInputChange}
           />
         </label>
