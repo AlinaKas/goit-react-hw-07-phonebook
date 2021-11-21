@@ -4,6 +4,7 @@ export const getContacts = state => state.contacts.items;
 export const getFilter = state => state.contacts.filter;
 export const getLoader = state => state.contacts.loading;
 
+// Мемоизация
 export const getVisibleContacts = createSelector(
   [getContacts, getFilter],
   (contacts, filter) => {

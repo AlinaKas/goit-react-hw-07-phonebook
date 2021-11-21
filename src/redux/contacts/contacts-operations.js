@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import * as actions from './contacts-actions';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL =
   'https://61965d6eaf46280017e7dff4.mockapi.io/api/phonebook';
