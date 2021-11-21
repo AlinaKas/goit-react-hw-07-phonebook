@@ -28,7 +28,9 @@ const Form = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const duplicateContact = contacts.find(contact => contact.name === name);
+    const duplicateContact = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
+    );
     if (duplicateContact) {
       alert(`${name} is already in contacts`);
       resetForm();
